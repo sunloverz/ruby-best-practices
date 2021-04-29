@@ -1,3 +1,8 @@
+# Another way to hone in on what a class is actually doing is to attempt to describe it
+# in one sentence. Remember that a class should do the smallest possible useful thing.
+# That thing ought to be simple to describe. If the simplest description you can devise
+# uses the word “and,” the class likely has more than one responsibility. If it uses the word
+# “or,” then the class has more than one responsibility and they aren’t even very related.
 
 class Gear
   def initialize(chainring, cog)
@@ -56,6 +61,8 @@ class RevealingReferences
     @wheels = wheelify(data)
   end
 
+  # This method clearly has two responsibilities: it iterates over the wheels and it calculates
+  # the diameter of each wheel.
   def diameters
     wheels.map {|wheel| wheel.rim + wheel.tire * 2}
   end
@@ -68,6 +75,11 @@ end
 
 ######################################
 # Extract extra responsibilites from methods
+#
+# Methods, like classes, should have a single responsibility. All of the same reasons
+# apply; having just one responsibility makes them easy to change and easy to reuse. All
+# the same design techniques work; ask them questions about what they do and try to
+# describe their responsibilities in a single sentence.
 
 class RevealingReferences
   attr_reader :wheels
